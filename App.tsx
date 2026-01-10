@@ -371,7 +371,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
               <section id="part-d" className="pt-16 border-t border-slate-100 pb-20">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-12 h-12 bg-red-700 text-white rounded-2xl flex items-center justify-center font-black text-xl">d</div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">Độc lập dân tộc gắn liền với thống nhất và toàn vẹn lãnh thổ</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">Độc lập dân tộc gắn liền with thống nhất và toàn vẹn lãnh thổ</h2>
                 </div>
                 <div className="space-y-8">
                   <p className="text-lg text-slate-700">Độc lập dân tộc không thể tách rời thống nhất đất nước. Toàn vẹn lãnh thổ là nguyên tắc bất biến xuyên suốt tư tưởng Hồ Chí Minh.</p>
@@ -458,7 +458,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                     </div>
                     <div className="flex items-start gap-4 p-4 bg-red-50 rounded-xl">
                       <CheckCircle2 className="text-red-700 w-6 h-6 mt-1 flex-shrink-0" />
-                      <p className="font-bold text-slate-900 text-lg uppercase tracking-tight">Giải phóng dân tộc gắn liền với giải phóng xã hội, giải phóng giai cấp và giải phóng con người</p>
+                      <p className="font-bold text-slate-900 text-lg uppercase tracking-tight">Giải phóng dân tộc gắn liền with giải phóng xã hội, giải phóng giai cấp và giải phóng con người</p>
                     </div>
                   </div>
                 </div>
@@ -753,7 +753,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                                   <Target className="w-5 h-5" /> Vai trò Vũ trang:
                                </h5>
                                <p className="text-slate-700 leading-relaxed">
-                                  Đấu tranh vũ trang giữ <strong>vai trò quyết định</strong> khi thời cơ chín muồi với việc tiêu diệt lực lượng quân sự.
+                                  Đấu tranh vũ trang giữ <strong>vai trò quyết định</strong> khi thời cơ chín muồi with việc tiêu diệt lực lượng quân sự.
                                </p>
                             </div>
                          </div>
@@ -791,7 +791,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
 // --- 3. TRANG CHỦ NGHĨA XÃ HỘI (II) ---
 const SocialismSection = () => (
   <div className="min-h-screen bg-white">
-    {/* Header trang II */}
+    {/* Header trang II (Thiết kế giống Phần I) */}
     <div className="pt-24 pb-10 bg-slate-50 border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-red-700 font-bold uppercase tracking-[0.2em] text-sm mb-3">Phần II</h2>
