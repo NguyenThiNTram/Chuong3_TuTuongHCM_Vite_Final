@@ -791,7 +791,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
 // --- 3. TRANG CHỦ NGHĨA XÃ HỘI (II) ---
 const SocialismSection = () => (
   <div className="min-h-screen bg-white">
-    {/* Header trang II (Thiết kế giống Phần I) */}
+    {/* Header trang II */}
     <div className="pt-24 pb-10 bg-slate-50 border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-red-700 font-bold uppercase tracking-[0.2em] text-sm mb-3">Phần II</h2>
@@ -813,62 +813,75 @@ const SocialismSection = () => (
             "Nói một cách tóm tắt, mộc mạc, chủ nghĩa xã hội trước hết nhằm làm cho nhân dân lao động thoát nạn bần cùng, làm cho mọi người có công ăn việc làm, được ấm no và sống một đời hạnh phúc."
           </p>
         </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center pt-8">
-          <div className="space-y-6 text-slate-700 text-lg leading-relaxed">
-            <p>
-              Hồ Chí Minh không đưa ra một định nghĩa cứng nhắc, kinh viện. Người tiếp cận chủ nghĩa xã hội từ những nhu cầu thiết thực nhất của con người.
-            </p>
-            <div className="bg-slate-50 p-6 rounded-2xl border-l-4 border-red-700">
-              <p className="font-bold text-slate-900 mb-2">Mục tiêu cao nhất:</p>
-              <p>Dân giàu – nước mạnh – dân chủ – công bằng – văn minh, lấy nhân dân là chủ thể trung tâm.</p>
-            </div>
-            <p>
-              Trong xã hội XHCN, lợi ích cá nhân không đối lập mà gắn bó hữu cơ với lợi ích tập thể. Đây là điểm ưu việt nổi bật so với xã hội tư bản.
-            </p>
-          </div>
-          <div className="h-full">
-            <ImageFrame label="Ảnh: Vì hạnh phúc nhân dân lao động" aspectRatio="aspect-video" />
-          </div>
-        </div>
       </section>
 
-      {/* 2. Tính tất yếu */}
+      {/* 2. Tính tất yếu - NỘI DUNG CẬP NHẬT THEO YÊU CẦU */}
       <section className="space-y-12 pt-16 border-t border-slate-100">
         <div className="flex items-center gap-4 mb-8">
           <div className="w-12 h-12 bg-red-700 text-white rounded-2xl flex items-center justify-center font-black text-xl">2</div>
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">Tiến lên chủ nghĩa xã hội là một tất yếu khách quan</h2>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {[
-            { 
-              title: "Giải quyết tận gốc", 
-              desc: "Chủ nghĩa xã hội giải quyết triệt để vấn đề áp bức, bóc lột, bảo đảm quyền làm chủ thực sự của nhân dân.",
-              icon: <ShieldCheck className="w-8 h-8 text-red-700" />
-            },
-            { 
-              title: "Nền tảng bền vững", 
-              desc: "Độc lập dân tộc là tiền đề, CNXH là con đường duy nhất để bảo đảm nền độc lập ấy một cách vững chắc lâu dài.",
-              icon: <TrendingUp className="w-8 h-8 text-red-700" />
-            },
-            { 
-              title: "Sự lựa chọn thời đại", 
-              desc: "Quá độ lên CNXH bỏ qua chế độ tư bản là sự lựa chọn phù hợp với yêu cầu giải phóng dân tộc và xu thế phát triển.",
-              icon: <Globe className="w-8 h-8 text-red-700" />
-            }
-          ].map((item, i) => (
-            <div key={i} className="p-8 bg-slate-50 rounded-3xl border border-slate-200 hover:bg-white hover:shadow-xl transition-all">
-              <div className="mb-4">{item.icon}</div>
-              <h4 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h4>
-              <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+        <div className="prose prose-slate max-w-none text-slate-700 space-y-8">
+          <p className="text-xl leading-relaxed">
+            Hồ Chí Minh vận dụng sáng tạo học thuyết hình thái kinh tế – xã hội của C. Mác để khẳng định rằng sự phát triển của xã hội loài người là một <strong>quá trình lịch sử – tự nhiên</strong>, tuân theo những quy luật khách quan. Trong tiến trình đó, sự sụp đổ của chủ nghĩa tư bản và thắng lợi của chủ nghĩa xã hội là tất yếu.
+          </p>
+          
+          <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 my-12">
+            <h4 className="font-bold text-red-700 mb-8 text-center uppercase tracking-widest text-lg">Từ thực tiễn cách mạng Việt Nam, Người đặt ra một vấn đề mang tính căn bản:</h4>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-red-50 text-red-700 rounded-full flex items-center justify-center mb-4 font-bold">?</div>
+                <h5 className="font-bold mb-2">Vì sao không thể dừng lại ở độc lập dân tộc?</h5>
+                <p className="text-sm opacity-80 italic">Bởi vì nếu chỉ có độc lập chính trị mà nhân dân vẫn nghèo đói, bất công xã hội vẫn tồn tại, thì nền độc lập ấy không thể bền vững.</p>
+              </div>
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-red-50 text-red-700 rounded-full flex items-center justify-center mb-4 font-bold">?</div>
+                <h5 className="font-bold mb-2">Chủ nghĩa xã hội giải quyết triệt để vấn đề gì?</h5>
+                <p className="text-sm opacity-80 italic">Chủ nghĩa xã hội giải quyết tận gốc vấn đề áp bức, bóc lột, bảo đảm quyền làm chủ thực sự của nhân dân, từ đó tạo nền tảng vững chắc cho độc lập dân tộc lâu dài.</p>
+              </div>
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+                <div className="w-12 h-12 bg-red-700 text-white rounded-full flex items-center justify-center mb-4 font-bold">✓</div>
+                <h5 className="font-bold mb-2">Sự lựa chọn tất yếu</h5>
+                <p className="text-sm opacity-80 italic">Tiến lên CNXH là con đường duy nhất để giải phóng con người và xã hội một cách toàn diện, triệt để.</p>
+              </div>
             </div>
-          ))}
+          </div>
+
+          <div className="space-y-8">
+            <div className="bg-red-50 border-l-8 border-red-700 p-8 rounded-r-3xl">
+              <h4 className="text-2xl font-bold text-red-900 mb-4 italic">Khẳng định mối quan hệ biện chứng:</h4>
+              <p className="text-xl font-medium leading-relaxed">
+                “Độc lập dân tộc là điều kiện tiên quyết, còn chủ nghĩa xã hội là con đường duy nhất để bảo đảm độc lập ấy một cách bền vững.”
+              </p>
+            </div>
+
+            <div className="space-y-6 pt-6">
+              <h4 className="text-xl font-bold text-slate-900 border-l-4 border-red-700 pl-4">Về con đường quá độ, Hồ Chí Minh chỉ ra sự lựa chọn phù hợp:</h4>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-inner italic">
+                  “Có nước đi thẳng lên chủ nghĩa xã hội từ chủ nghĩa tư bản phát triển.”
+                </div>
+                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-inner italic">
+                  “Có nước phải trải qua thời kỳ dân chủ mới rồi tiến lên chủ nghĩa xã hội.”
+                </div>
+              </div>
+
+              <div className="bg-red-700 text-white p-10 rounded-[2.5rem] shadow-2xl transform hover:scale-[1.02] transition-all">
+                 <h4 className="text-2xl font-black mb-4 flex items-center gap-3 italic">
+                    <Flag className="w-8 h-8 text-yellow-400" /> Đối với Việt Nam:
+                 </h4>
+                 <p className="text-xl leading-relaxed font-medium">
+                    Là một nước thuộc địa, nửa phong kiến – con đường phù hợp là <strong>quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa</strong>. Đây không phải là sự phủ nhận các thành tựu văn minh nhân loại, mà là sự lựa chọn phù hợp với yêu cầu giải phóng dân tộc và xu thế phát triển của thời đại.
+                 </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* 3. Đặc trưng */}
-      <section className="space-y-12 pt-16 border-t border-slate-100 pb-32">
+      {/* 3. Đặc trưng - ĐIỀU CHỈNH SIZE CHỮ THEO YÊU CẦU */}
+      <section className="space-y-12 pt-16 border-t border-slate-100">
         <div className="flex items-center gap-4 mb-8">
           <div className="w-12 h-12 bg-red-700 text-white rounded-2xl flex items-center justify-center font-black text-xl">3</div>
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">Đặc trưng cơ bản của xã hội XHCN</h2>
@@ -881,9 +894,9 @@ const SocialismSection = () => (
           </div>
           <div className="divide-y divide-slate-100">
             {SOCIALIST_CHARACTERISTICS.map((c, i) => (
-              <div key={i} className="grid md:grid-cols-4 p-8 items-center gap-6 group hover:bg-red-50/30 transition-colors">
-                <div className="font-black text-red-700 text-lg uppercase md:text-center">{c.field}</div>
-                <div className="md:col-span-3 text-slate-700 leading-relaxed font-medium">
+              <div key={i} className="grid md:grid-cols-4 p-10 items-center gap-10 group hover:bg-red-50/30 transition-colors">
+                <div className="font-black text-red-700 text-xl uppercase md:text-center border-b md:border-b-0 pb-2 md:pb-0">{c.field}</div>
+                <div className="md:col-span-3 text-slate-900 leading-relaxed font-bold text-2xl">
                   {c.content}
                 </div>
               </div>
@@ -892,14 +905,25 @@ const SocialismSection = () => (
         </div>
 
         <div className="max-w-3xl mx-auto pt-8">
-          <div className="bg-slate-900 text-white p-8 rounded-[2rem] shadow-xl text-center relative">
-            <p className="text-xl font-bold mb-4 flex items-center justify-center gap-3">
-               <Scale className="text-red-500" /> Nguyên tắc phân phối:
-            </p>
-            <p className="text-2xl font-playfair italic text-red-100">
+          <div className="bg-slate-900 text-white p-10 rounded-[2rem] shadow-xl text-center relative overflow-hidden">
+            <p className="text-xl font-bold mb-4 uppercase tracking-widest text-red-500">Nguyên tắc phân phối:</p>
+            <p className="text-3xl font-playfair italic text-white leading-tight">
               “Làm nhiều hưởng nhiều, làm ít hưởng ít, không làm thì không hưởng”
             </p>
-            <p className="mt-4 text-xs opacity-50 uppercase tracking-widest">(Trừ những người già yếu, tàn tật)</p>
+            <p className="mt-6 text-sm opacity-50 italic">
+              (Trừ những người già yếu, tàn tật)
+            </p>
+          </div>
+        </div>
+
+        {/* Khung nổi bật cho kết luận cuối cùng */}
+        <div className="pt-24 max-w-4xl mx-auto pb-20">
+          <div className="bg-red-50 border-4 border-double border-red-200 p-12 rounded-[3.5rem] text-center shadow-2xl relative">
+            <Star className="absolute top-[-30px] left-1/2 -translate-x-1/2 w-14 h-14 text-yellow-500 fill-yellow-500 shadow-xl" />
+            <h3 className="text-3xl font-playfair font-black text-red-900 mb-8 uppercase tracking-tighter">Kết luận</h3>
+            <p className="text-2xl md:text-3xl text-slate-900 font-bold leading-relaxed italic">
+              “Tư tưởng Hồ Chí Minh về chủ nghĩa xã hội không phải là một mô hình giáo điều hay áp đặt, mà là một xã hội thực sự ưu việt, nhằm giải phóng con người một cách toàn diện.”
+            </p>
           </div>
         </div>
       </section>
