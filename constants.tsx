@@ -1,5 +1,5 @@
 
-import { TimelineEvent, Characteristic } from './types';
+import { TimelineEvent, Characteristic } from './src/types';
 
 export const TIMELINE_EVENTS: TimelineEvent[] = [
   {

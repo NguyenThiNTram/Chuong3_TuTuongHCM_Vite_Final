@@ -34,21 +34,48 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { TIMELINE_EVENTS, SOCIALIST_CHARACTERISTICS } from './constants';
-
+console.log("Live source check");
 // --- Component Khung Ảnh ---
-const ImageFrame = ({ label = "Ảnh minh họa", aspectRatio = "aspect-video" }: { label?: string, aspectRatio?: string }) => (
-  <div className={`w-full ${aspectRatio} bg-slate-100 border-2 border-dashed border-slate-300 rounded-2xl flex flex-col items-center justify-center group hover:bg-slate-200 hover:border-red-300 transition-all cursor-pointer overflow-hidden relative`}>
-    <ImageIcon className="w-10 h-10 text-slate-400 group-hover:text-red-500 transition-colors mb-2" />
-    <span className="text-xs font-bold text-slate-400 group-hover:text-red-600 uppercase tracking-widest text-center px-4">{label}</span>
-    <div className="absolute inset-0 bg-red-900/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+const ImageFrame = ({ 
+  label = "Ảnh minh họa", 
+  aspectRatio = "aspect-video",
+  src,
+  className = ""
+}: { 
+  label?: string, 
+  aspectRatio?: string,
+  src?: string,
+  className?: string
+}) => (
+  <div className={`w-full ${aspectRatio} ${className} rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 relative`}>
+    {src ? (
+      <img src={src} className="w-full h-full object-cover" />
+    ) : (
+      <div className="w-full h-full border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400 text-sm">
+        {label}
+      </div>
+    )}
   </div>
 );
 
-// --- Component Trích dẫn kèm Ảnh ---
-const QuoteWithImage = ({ text, author = "Hồ Chí Minh", subText = "" }: { text: string, author?: string, subText?: string }) => (
+
+
+const QuoteWithImage = ({
+  text,
+  author = "Hồ Chí Minh",
+  subText = "",
+  image,
+  imageClass = ""
+}: {
+  text: string;
+  author?: string;
+  subText?: string;
+  image?: string;
+  imageClass?: string;
+}) => (
   <div className="my-10 grid md:grid-cols-2 gap-8 items-center">
     <div className="order-2 md:order-1">
-      <ImageFrame label={`Ảnh: ${text.slice(0, 30)}...`} />
+      <ImageFrame src={image} className={imageClass} />
     </div>
     <div className="order-1 md:order-2 border-l-4 border-red-700 pl-6 py-4 bg-red-50/50 rounded-r-2xl">
       <Quote className="text-red-200 w-10 h-10 mb-2" />
@@ -59,6 +86,7 @@ const QuoteWithImage = ({ text, author = "Hồ Chí Minh", subText = "" }: { tex
   </div>
 );
 
+
 // --- 1. TRANG ĐẦU: GIỚI THIỆU ---
 const HomePage = ({ onStart }: { onStart: () => void }) => (
   <div className="min-h-screen flex flex-col items-center justify-center gradient-red text-white p-6 relative overflow-hidden">
@@ -66,15 +94,22 @@ const HomePage = ({ onStart }: { onStart: () => void }) => (
       <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-yellow-400 rounded-full blur-[120px]"></div>
     </div>
     <div className="relative z-10 text-center max-w-4xl">
-      <h2 className="text-2xl md:text-3xl font-medium mb-4 text-red-100 uppercase tracking-widest">Chương III</h2>
+      <h2 className="text-3xl md:text-4xl font-black mb-4 text-yellow-300 uppercase tracking-[0.3em] drop-shadow-xl">
+        Chương III
+      </h2>
+
+      <h3 className="text-3xl md:text-5xl font-semibold mb-3 text-red-100 uppercase tracking-wider">
+        Tư tưởng Hồ Chí Minh
+      </h3>
+
       <h1 className="text-5xl md:text-8xl font-playfair font-black mb-10 leading-tight drop-shadow-2xl">
-        Tư tưởng Hồ Chí Minh về <br/> Độc lập Dân tộc & <br/> Chủ nghĩa Xã hội
+        Độc lập Dân tộc <br /> &amp; Chủ nghĩa Xã hội
       </h1>
       <button 
         onClick={onStart}
         className="group relative inline-flex items-center gap-4 bg-white text-red-700 px-12 py-6 rounded-full font-bold text-xl shadow-2xl hover:bg-yellow-400 hover:text-red-900 transition-all transform hover:scale-105"
       >
-        Bắt đầu hành trình
+        Bắt đầu
         <ChevronRight className="group-hover:translate-x-2 transition-transform" />
       </button>
     </div>
@@ -152,6 +187,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                   <QuoteWithImage 
                     text="Cái mà tôi cần nhất trên đời là đồng bào tôi được tự do, Tổ quốc tôi được độc lập."
                     subText="Lời khẳng định khát vọng từ thuở thiếu thời"
+                    image="/images/tuyen-ngon.jpg"
                   />
 
                   <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 my-8">
@@ -166,6 +202,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                   <QuoteWithImage 
                     text="Tất cả các dân tộc trên thế giới đều sinh ra bình đẳng; dân tộc nào cũng có quyền sống, quyền sung sướng và quyền tự do... Đó là những lẽ phải không ai chối cãi được"
                     subText="Dựa trên Tuyên ngôn Mỹ (1776) và Pháp (1791)"
+                    image="/images/Bac-Ho-Tuyen-ngon-doc-lap.jpg"
                   />
 
                   <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 my-8">
@@ -180,6 +217,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                   <QuoteWithImage 
                     text="Nước Việt Nam có quyền hưởng tự do và độc lập, và sự thực đã thành một nước tự do và độc lập. Toàn thể dân Việt Nam quyết đem tất cả tinh thần và lực lượng, tính mạng và của cải để giữ vững quyền tự do và độc lập ấy"
                     subText="Tuyên ngôn Độc lập - 2/9/1945"
+                    image="/images/Viet-nam-tu-do-doc-lap.jpg"
                   />
 
                   <div className="pt-10 space-y-8">
@@ -193,10 +231,13 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                           <Mail className="text-red-700 w-6 h-6" />
                           <h4 className="font-bold text-lg">Trong thư gửi Liên hợp quốc năm 1946:</h4>
                         </div>
-                        <QuoteWithImage 
-                          text="Nhân dân chúng tôi thành thật mong muốn hoà bình. Nhưng nhân dân chúng tôi cũng kiên quyết chiến đấu đến cùng để bảo vệ những quyền thiêng liêng nhất: toàn vẹn lãnh thổ cho Tổ quốc và độc lập cho đất nước"
-                          author="Hồ Chí Minh (1946)"
-                        />
+                        <div className="my-10 border-l-8 border-red-700 bg-red-50/60 p-8 rounded-r-3xl shadow-lg">
+                          <Quote className="text-red-200 w-10 h-10 mb-4" />
+                          <p className="text-xl md:text-2xl font-medium text-red-950 italic leading-relaxed mb-4">
+                            “Nhân dân chúng tôi thành thật mong muốn hoà bình. Nhưng nhân dân chúng tôi cũng kiên quyết chiến đấu đến cùng để bảo vệ những quyền thiêng liêng nhất: toàn vẹn lãnh thổ cho Tổ quốc và độc lập cho đất nước.”
+                          </p>
+                          <p className="text-red-700 font-bold text-right">— Hồ Chí Minh (1946)</p>
+                        </div>
                       </div>
 
                       <div className="grid md:grid-cols-2 gap-10">
@@ -371,7 +412,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
               <section id="part-d" className="pt-16 border-t border-slate-100 pb-20">
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-12 h-12 bg-red-700 text-white rounded-2xl flex items-center justify-center font-black text-xl">d</div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">Độc lập dân tộc gắn liền with thống nhất và toàn vẹn lãnh thổ</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">Độc lập dân tộc gắn liền với thống nhất và toàn vẹn lãnh thổ</h2>
                 </div>
                 <div className="space-y-8">
                   <p className="text-lg text-slate-700">Độc lập dân tộc không thể tách rời thống nhất đất nước. Toàn vẹn lãnh thổ là nguyên tắc bất biến xuyên suốt tư tưởng Hồ Chí Minh.</p>
@@ -458,7 +499,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                     </div>
                     <div className="flex items-start gap-4 p-4 bg-red-50 rounded-xl">
                       <CheckCircle2 className="text-red-700 w-6 h-6 mt-1 flex-shrink-0" />
-                      <p className="font-bold text-slate-900 text-lg uppercase tracking-tight">Giải phóng dân tộc gắn liền with giải phóng xã hội, giải phóng giai cấp và giải phóng con người</p>
+                      <p className="font-bold text-slate-900 text-lg uppercase tracking-tight">Giải phóng dân tộc gắn liền với giải phóng xã hội, giải phóng giai cấp và giải phóng con người</p>
                     </div>
                   </div>
                 </div>
@@ -504,7 +545,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                   <div className="border-l-8 border-red-700 bg-slate-50 p-8 rounded-r-[2rem] shadow-lg relative">
                     <Quote className="absolute top-2 right-4 text-red-100 w-16 h-16 -z-0" />
                     <p className="text-2xl font-playfair italic leading-relaxed mb-6 relative z-10 text-slate-900">
-                      "Đàng của giai cấp công nhân đồng thời là Đảng của toàn dân tộc Việt Nam"
+                      "Đảng của giai cấp công nhân đồng thời là Đảng của toàn dân tộc Việt Nam"
                     </p>
                     <p className="mt-6 font-bold text-red-700 text-right">— Báo cáo chính trị tại Đại hội II của Đảng (1951), Hồ Chí Minh</p>
                   </div>
@@ -655,7 +696,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                       </div>
                       <div className="lg:col-span-8 space-y-6">
                         <h3 className="text-2xl font-bold text-red-800 leading-tight">
-                          Trong <span className="italic">"Bản án chế độ thực dân Pháp (1925)"</span>, Người ví chủ nghĩa đế quốc như:
+                          Trong <span className="italic">"Bản án chế độ thực dân Pháp (1925)"</span>, Người ví chủ nghĩa tư bản như:
                         </h3>
                         <div className="bg-red-700 text-white p-6 rounded-2xl shadow-xl border-4 border-white inline-block">
                           <p className="text-3xl font-black uppercase italic tracking-tighter">“Con đỉa hai vòi”</p>
@@ -714,8 +755,8 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                    <div className="absolute top-0 right-0 w-32 h-32 bg-red-700/5 rounded-bl-[5rem]"></div>
                    <div className="relative z-10 space-y-10">
                       <div className="text-center">
-                        <h3 className="text-3xl font-black text-red-800 mb-2 uppercase tracking-tighter">Hồ Chí Minh khẳng định:</h3>
-                        <p className="text-xl font-bold text-slate-900 italic">“Dùng bạo lực cách mạng để chống lại bạo lực phản cách mạng”</p>
+                        <h3 className="text-3xl font-black text-red-800 mb-2 uppercase tracking-tighter">Hồ Chí Minh đã thấy rõ sự cần thiết phải sử dụng bạo lực cách mạng:</h3>
+                        <p className="text-xl font-bold text-slate-900 italic">‘‘Trong cuộc đấu tranh gian khổ chống kẻ thù của giai cấp và dân tộc, cần dùng bạo lực cách mạng chống lại bạo lực phản cách mạng, giành lấy chính quyền và bảo vệ chính quyền”</p>
                       </div>
 
                       <div className="bg-red-50 p-6 rounded-2xl text-center border-l-4 border-red-700">
@@ -753,7 +794,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                                   <Target className="w-5 h-5" /> Vai trò Vũ trang:
                                </h5>
                                <p className="text-slate-700 leading-relaxed">
-                                  Đấu tranh vũ trang giữ <strong>vai trò quyết định</strong> khi thời cơ chín muồi with việc tiêu diệt lực lượng quân sự.
+                                  Đấu tranh vũ trang giữ <strong>vai trò quyết định</strong> khi thời cơ chín muồi với việc tiêu diệt lực lượng quân sự.
                                </p>
                             </div>
                          </div>
@@ -934,6 +975,7 @@ const SocialismSection = () => (
 // --- MAIN APP ---
 
 export default function App() {
+  <h1 classname="text-red-700">RENDER CHECK</h1>
   const [page, setPage] = useState<'home' | 'independence' | 'socialism'>('home');
   const [subPage, setSubPage] = useState(0);
 
@@ -963,11 +1005,11 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
             <button onClick={() => setPage('home')} className="flex items-center gap-3 group">
               <div className="w-10 h-10 bg-red-700 text-white rounded-xl flex items-center justify-center font-bold group-hover:bg-red-800 transition-all shadow-lg shadow-red-200">H</div>
-              <span className="font-playfair text-xl font-black text-slate-900 hidden md:block uppercase tracking-tighter">Chương III</span>
+              <span className="font-playfair text-xl font-black text-slate-900 hidden md:block uppercase tracking-tighter">Tư tưởng Hồ Chí Minh</span>
             </button>
             <nav className="flex items-center gap-8">
-              <button onClick={() => {setPage('independence'); setSubPage(0);}} className={`text-sm font-bold transition-all ${page === 'independence' ? 'text-red-700 underline underline-offset-8 decoration-2' : 'text-slate-400 hover:text-slate-600'}`}>I. Độc lập dân tộc</button>
-              <button onClick={() => setPage('socialism')} className={`text-sm font-bold transition-all ${page === 'socialism' ? 'text-red-700 underline underline-offset-8 decoration-2' : 'text-slate-400 hover:text-slate-600'}`}>II. Chủ nghĩa xã hội</button>
+              <button onClick={() => {setPage('independence'); setSubPage(0);}} className={`text-sm font-bold transition-all ${page === 'independence' ? 'text-red-700 underline underline-offset-8 decoration-2' : 'text-slate-400 hover:text-slate-600'}`}>Phần I</button>
+              <button onClick={() => setPage('socialism')} className={`text-sm font-bold transition-all ${page === 'socialism' ? 'text-red-700 underline underline-offset-8 decoration-2' : 'text-slate-400 hover:text-slate-600'}`}>Phần II</button>
             </nav>
           </div>
         </header>

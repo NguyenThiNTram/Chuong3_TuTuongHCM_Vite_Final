@@ -1,5 +1,16 @@
 
-import { TimelineEvent, Characteristic } from './types';
+// Local type definitions (replaces missing ./types import)
+export type TimelineEvent = {
+  year: string;
+  title: string;
+  content: string;
+  quote?: string;
+};
+
+export type Characteristic = {
+  field: string;
+  content: string;
+};
 
 export const TIMELINE_EVENTS: TimelineEvent[] = [
   {
