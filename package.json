@@ -1,5 +1,5 @@
 {
-  "name": "tư-tưởng-hồ-chí-minh---chương-iii",
+  "name": "tu-tuong-ho-chi-minh-chuong-iii",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,14 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "lucide-react": "^0.562.0",
     "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react-dom": "^19.2.3",
+    "lucide-react": "^0.562.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.1.2",
     "typescript": "~5.8.2",
-    "vite": "^6.4.1"
+    "vite": "^6.4.1",
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.35",
+    "autoprefixer": "^10.4.19"
   }
 }
