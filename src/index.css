@@ -4,6 +4,4 @@
 
 body { font-family: 'Inter', sans-serif; }
 .font-playfair { font-family: 'Playfair Display', serif; }
-.gradient-red { 
-  background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%); 
-}
+.gradient-red { background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%); }
