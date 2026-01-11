@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
+  
   safelist: [
     'bg-red-700','bg-red-800','bg-slate-50','bg-slate-900',
     'text-white','text-red-700','text-slate-500','text-slate-900',
@@ -18,6 +19,7 @@ export default {
     extend: {
       fontFamily: {
         playfair: ['"Playfair Display"', 'serif'],
+        noto: ['"Noto Serif"', 'serif'],
       },
     },
   },

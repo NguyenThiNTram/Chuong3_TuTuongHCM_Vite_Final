@@ -1094,7 +1094,7 @@ const CQSection = () => {
                 <Target className="w-6 h-6 animate-pulse delay-150" />
               </div>
               <h1 className="text-4xl sm:text-5xl font-black mb-6 leading-tight uppercase tracking-tighter">tư tưởng Hồ Chí Minh về cách mạng giải phóng dân tộc</h1>
-              <p className="text-2xl sm:text-3xl font-serif italic text-red-50 leading-relaxed drop-shadow-lg">
+              <p className="text-2xl sm:text-3xl font-noto italic text-red-50 leading-relaxed drop-shadow-lg">
                 “Học hỏi từ thế giới nhưng hành động phải dựa trên thực tiễn dân tộc.”
               </p>
             </div>
@@ -1226,7 +1226,7 @@ const CQSection = () => {
           <div className="pt-20">
              <div className="relative p-12 sm:p-20 bg-red-50 rounded-[4rem] border-8 border-double border-red-200 text-center shadow-2xl">
                 <Award className="w-16 h-16 text-red-600 mx-auto mb-8 animate-bounce" />
-                <h3 className="text-2xl sm:text-3xl font-serif italic text-red-900 mb-8 leading-relaxed">
+                <h3 className="text-2xl sm:text-3xl font-noto italic text-red-900 mb-8 leading-relaxed">
                   “Di sản Hồ Chí Minh không chỉ là độc lập dân tộc, mà là một phương pháp luận hành động cho thế hệ trẻ.”
                 </h3>
                 <div className="w-24 h-1 bg-red-300 mx-auto rounded-full mb-8"></div>
