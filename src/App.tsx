@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { 
   History, 
   ShieldCheck, 
@@ -31,10 +33,18 @@ import {
   Compass,
   Link as LinkIcon,
   Award,
-  AlertCircle
+  AlertCircle,
+  Navigation,
+  Rocket,
+  Filter,
+  ArrowLeftRight,
+  CircleDot,
+  Lightbulb,
+  Bird // Added Bird icon
 } from 'lucide-react';
 import { TIMELINE_EVENTS, SOCIALIST_CHARACTERISTICS } from './constants';
 console.log("Live source check");
+
 // --- Component Khung Ảnh ---
 const ImageFrame = ({ 
   label = "Ảnh minh họa", 
@@ -944,7 +954,7 @@ const SocialismSection = () => (
             <h4 className="font-bold text-red-700 mb-8 text-center uppercase tracking-widest text-lg">Từ thực tiễn cách mạng Việt Nam, Người đặt ra một vấn đề mang tính căn bản:</h4>
             <div className="mb-10">
             <ImageFrame 
-              src="/images/van-de-can-ban."
+              src="/images/HCM-XHCN.jpg"
               label="Ảnh minh họa: Từ thực tiễn cách mạng Việt Nam"
               className="max-h-[360px]"
               fit="contain"
@@ -1052,11 +1062,185 @@ const SocialismSection = () => (
   </div>
 );
 
-// --- MAIN APP ---
+// --- 4. TRANG CQ: SÁNG TẠO & THANH NIÊN (MỚI) ---
+const CQSection = () => {
+  const [scrollProgress, setScrollProgress] = useState(0);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white">
+      <div className="fixed top-20 left-0 h-1 bg-red-600 transition-all duration-100 z-[60]" style={{ width: `${scrollProgress}%` }} />
+
+      <div className="pt-24 pb-0">
+        <div className="max-w-6xl mx-auto px-4 mb-16">
+          <div className="relative overflow-hidden rounded-[3rem] bg-gradient-to-br from-red-800 via-red-600 to-red-500 text-white p-12 sm:p-20 shadow-2xl">
+            <div className="absolute inset-0 opacity-10 pointer-events-none flex justify-between px-10 items-center overflow-hidden">
+              <Globe className="w-[30rem] h-[30rem] -ml-24 transform -rotate-12" />
+              <Navigation className="w-[25rem] h-[25rem] -mr-24 transform rotate-12" />
+            </div>
+            <div className="relative z-10 max-w-3xl mx-auto text-center">
+              <div className="flex justify-center gap-4 mb-8 opacity-80">
+                <Compass className="w-6 h-6 animate-pulse" />
+                <Globe className="w-6 h-6 animate-pulse delay-75" />
+                <Target className="w-6 h-6 animate-pulse delay-150" />
+              </div>
+              <h1 className="text-4xl sm:text-5xl font-black mb-6 leading-tight uppercase tracking-tighter">tư tưởng Hồ Chí Minh về cách mạng giải phóng dân tộc</h1>
+              <p className="text-2xl sm:text-3xl font-serif italic text-red-50 leading-relaxed drop-shadow-lg">
+                “Học hỏi từ thế giới nhưng hành động phải dựa trên thực tiễn dân tộc.”
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 pb-32 space-y-32">
+          <section>
+             <div className="flex items-center gap-4 mb-12">
+                <div className="w-14 h-14 bg-red-700 text-white rounded-2xl flex items-center justify-center shadow-lg"><Lightbulb className="w-8 h-8" /></div>
+                <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase">I. TÍNH SÁNG TẠO ĐỘC ĐÁO</h2>
+             </div>
+
+             <div className="space-y-20">
+                <div className="flex flex-col lg:flex-row gap-12 items-center">
+                  <div className="lg:w-2/5 w-full">
+                    <ImageFrame 
+                    src = "/images/tat-ca-dan-toc-binh-dang.jpg"
+                    label="Hồ Chí Minh tại Pháp 1919" aspectRatio="aspect-[4/5]" 
+                    className="grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" />
+                  </div>
+                  <div className="lg:w-3/5 bg-red-50 p-10 rounded-[3rem] border border-red-100 shadow-sm relative">
+                    <span className="absolute top-4 right-8 text-8xl font-black text-red-700/5 select-none">01</span>
+                    <h3 className="text-2xl font-bold text-red-900 mb-6 flex items-center gap-3">“Dân tộc hóa” quyền con người</h3>
+                    <p className="text-lg text-slate-700 mb-8 leading-relaxed">Hồ Chí Minh đã nâng quyền cá nhân thành quyền dân tộc, biến nhân quyền thành vũ khí chính trị chống thực dân.</p>
+                    <blockquote className="bg-white p-6 rounded-2xl border-l-8 border-red-700 italic text-xl font-medium text-red-950 shadow-sm mb-6">
+                      “Tất cả các dân tộc trên thế giới đều sinh ra bình đẳng...”
+                    </blockquote>
+                    <div className="inline-block px-4 py-2 bg-red-700 text-white text-xs font-black uppercase tracking-widest rounded-full shadow-lg shadow-red-200">
+                      SÁNG TẠO CỐT LÕI: Độc lập dân tộc là tiền đề của quyền con người.
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-amber-50/50 p-10 rounded-[3rem] border border-amber-100 shadow-sm">
+                  <div className="flex items-center gap-4 mb-8">
+                    <Bird className="text-amber-600 w-8 h-8" />
+                    <h3 className="text-2xl font-black text-slate-900">Đổi mới con đường cách mạng</h3>
+                  </div>
+                  <p className="text-lg text-slate-700 mb-6 leading-relaxed">
+                    Trái với quan điểm "Châu Âu là trung tâm" của Quốc tế Cộng sản (cho rằng thuộc địa phải đợi chính quốc thắng lợi), Hồ Chí Minh khẳng định: Cách mạng thuộc địa có thể thắng trước.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-8 items-stretch mb-10">
+                    <div className="bg-amber-600 p-8 rounded-2xl shadow-xl text-center text-white flex flex-col justify-center transform hover:scale-[1.02] transition-transform">
+                      <span className="text-xs font-bold text-amber-200 uppercase tracking-widest mb-2">Mác - Lênin (Châu Âu)</span>
+                      <p className="text-xl font-black">Giải phóng giai cấp</p>
+                      <div className="my-4 flex justify-center"><ArrowLeftRight className="text-amber-300" /></div>
+                      <p className="text-xl font-black">Giải phóng dân tộc</p>
+                    </div>
+                    <div className="bg-amber-600 p-8 rounded-2xl shadow-xl text-center text-white flex flex-col justify-center transform hover:scale-[1.02] transition-transform">
+                      <span className="text-xs font-bold text-amber-200 uppercase tracking-widest mb-2">Hồ Chí Minh (Thuộc địa)</span>
+                      <p className="text-xl font-black">Giải phóng dân tộc</p>
+                      <div className="my-4 flex justify-center"><ArrowLeftRight className="text-amber-300 rotate-180" /></div>
+                      <p className="text-xl font-black">Giải phóng giai cấp</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col md:flex-row gap-6 items-center bg-white p-6 rounded-2xl border border-amber-100">
+                    <CircleDot className="w-12 h-12 text-amber-600 animate-spin-slow" />
+                    <p className="text-lg text-slate-700 italic">Người ví chủ nghĩa tư bản là <strong>“con đỉa hai vòi”</strong>. Cắt vòi ở thuộc địa sẽ làm kẻ thù suy yếu tận gốc.</p>
+                  </div>
+                </div>
+
+                <div className="bg-emerald-50/50 p-10 rounded-[3rem] border border-emerald-100 shadow-sm overflow-hidden relative">
+                   <Users className="absolute -bottom-10 -right-10 w-64 h-64 text-emerald-100" />
+                   <h3 className="text-2xl font-black text-slate-900 mb-8 flex items-center gap-3">
+                     <div className="w-2 h-10 bg-emerald-600 rounded-full"></div>
+                     Đảng của dân tộc – Khối Đại Đoàn Kết
+                   </h3>
+                   
+                   <div className="space-y-4 mb-12 max-w-2xl text-slate-700 text-lg leading-relaxed relative z-10">
+                     <p>Bác không xây dựng một Đảng "giai cấp cực đoan" mà xác định Đảng Lao động Việt Nam là Đảng của dân tộc.</p>
+                     <div className="bg-emerald-100/30 p-6 rounded-2xl border-l-4 border-emerald-600 italic">
+                       <p className="font-bold text-emerald-900 mb-2">Trong Đường cách mệnh (1927):</p>
+                       <ul className="space-y-2 list-disc pl-5 text-slate-800 font-medium">
+                         <li>“Cách mệnh trước hết phải có Đảng cách mệnh.”</li>
+                         <li>“Đảng là người lãnh đạo, người tổ chức mọi thắng lợi của cách mạng.”</li>
+                       </ul>
+                     </div>
+                   </div>
+
+                   <div className="relative py-20 flex justify-center">
+                      <div className="relative w-80 h-80 flex items-center justify-center">
+                        <div className="absolute inset-0 border-4 border-dashed border-emerald-200 rounded-full animate-spin-slow"></div>
+                        <div className="z-10 bg-emerald-600 text-white w-44 h-44 rounded-full flex items-center justify-center text-center font-black shadow-2xl border-4 border-white leading-tight text-2xl">
+                          ĐẢNG<br/>DÂN TỘC
+                        </div>
+                        {[
+                          {label: "Công", pos: "top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"},
+                          {label: "Nông", pos: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2"},
+                          {label: "Trí thức", pos: "left-0 top-1/2 -translate-x-1/2 -translate-y-1/2"},
+                          {label: "Thanh niên", pos: "right-0 top-1/2 translate-x-1/2 -translate-y-1/2"},
+                        ].map((node, idx) => (
+                          <div key={idx} className={`absolute ${node.pos} w-24 h-24 bg-white rounded-full shadow-lg flex items-center justify-center text-sm font-black uppercase text-emerald-700 border border-emerald-100 text-center px-1 group hover:scale-110 transition-transform duration-300`}>
+                            {node.label}
+                          </div>
+                        ))}
+                      </div>
+                   </div>
+                   <p className="mt-12 text-center text-slate-600 max-w-2xl mx-auto">Đại đoàn kết không biên giới, tập hợp mọi lực lượng yêu nước dưới ngọn cờ dân tộc.</p>
+                </div>
+             </div>
+          </section>
+
+          <section>
+            <div className="flex items-center gap-4 mb-16">
+              <div className="w-14 h-14 bg-red-700 text-white rounded-2xl flex items-center justify-center shadow-lg"><Users className="w-8 h-8" /></div>
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter uppercase">II. GỢI MỞ CHO THANH NIÊN (3C)</h2>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+               {[
+                 {title: "Chủ động", icon: Zap, color: "red", lesson: "Tự lực cánh sinh, dám nghĩ, dám làm, không thụ động."},
+                 {title: "Chọn lọc", icon: Filter, color: "blue", lesson: "Tư duy \"Hòa nhập nhưng không hòa tan\""},
+                 {title: "Cộng đồng", icon: Users, color: "emerald", lesson: "Đoàn kết là sức mạnh - Gắn lợi ích cá nhân với lợi ích dân tộc, góp phần xây dựng đất nước giàu mạnh, văn minh"}
+               ].map((c, i) => (
+                 <div key={i} className="group bg-white p-10 rounded-[3rem] border border-slate-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                   <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 bg-${c.color}-50 text-${c.color}-600 group-hover:bg-${c.color}-600 group-hover:text-white transition-colors duration-300`}><c.icon className="w-8 h-8" /></div>
+                   <h4 className="text-2xl font-black text-slate-900 mb-4">{c.title}</h4>
+                   <ul className="space-y-3">
+                     <li className="flex items-start gap-2 text-slate-500 font-medium">
+                       <div className="w-1.5 h-1.5 rounded-full bg-red-600 mt-2 flex-shrink-0"></div>
+                       <span>{c.lesson}</span>
+                     </li>
+                   </ul>
+                 </div>
+               ))}
+            </div>
+          </section>
+
+          <div className="pt-20">
+             <div className="relative p-12 sm:p-20 bg-red-50 rounded-[4rem] border-8 border-double border-red-200 text-center shadow-2xl">
+                <Award className="w-16 h-16 text-red-600 mx-auto mb-8 animate-bounce" />
+                <h3 className="text-2xl sm:text-3xl font-serif italic text-red-900 mb-8 leading-relaxed">
+                  “Di sản Hồ Chí Minh không chỉ là độc lập dân tộc, mà là một phương pháp luận hành động cho thế hệ trẻ.”
+                </h3>
+                <div className="w-24 h-1 bg-red-300 mx-auto rounded-full mb-8"></div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- APP CHÍNH ---
 export default function App() {
-  <h1 classname="text-red-700">RENDER CHECK</h1>
-  const [page, setPage] = useState<'home' | 'independence' | 'socialism'>('home');
+  const [page, setPage] = useState<'home' | 'independence' | 'socialism' | 'cq'>('home');
   const [subPage, setSubPage] = useState(0);
 
   const goToNext = () => {
@@ -1065,6 +1249,7 @@ export default function App() {
       if (subPage === 0) setSubPage(1);
       else setPage('socialism');
     }
+    else if (page === 'socialism') setPage('cq');
   };
 
   const goToPrev = () => {
@@ -1076,6 +1261,7 @@ export default function App() {
       setPage('independence');
       setSubPage(1);
     }
+    else if (page === 'cq') setPage('socialism');
   };
 
   return (
@@ -1085,11 +1271,12 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
             <button onClick={() => setPage('home')} className="flex items-center gap-3 group">
               <div className="w-10 h-10 bg-red-700 text-white rounded-xl flex items-center justify-center font-bold group-hover:bg-red-800 transition-all shadow-lg shadow-red-200">H</div>
-              <span className="font-playfair text-xl font-black text-slate-900 hidden md:block uppercase tracking-tighter">Tư tưởng Hồ Chí Minh</span>
+              <span className="font-playfair text-xl font-black text-slate-900 hidden md:block uppercase tracking-tighter">Di Sản Hồ Chí Minh</span>
             </button>
             <nav className="flex items-center gap-8">
               <button onClick={() => {setPage('independence'); setSubPage(0);}} className={`text-sm font-bold transition-all ${page === 'independence' ? 'text-red-700 underline underline-offset-8 decoration-2' : 'text-slate-400 hover:text-slate-600'}`}>Phần I</button>
               <button onClick={() => setPage('socialism')} className={`text-sm font-bold transition-all ${page === 'socialism' ? 'text-red-700 underline underline-offset-8 decoration-2' : 'text-slate-400 hover:text-slate-600'}`}>Phần II</button>
+              <button onClick={() => setPage('cq')} className={`text-sm font-bold transition-all ${page === 'cq' ? 'text-red-700 underline underline-offset-8 decoration-2' : 'text-slate-400 hover:text-slate-600'}`}>CQ</button>
             </nav>
           </div>
         </header>
@@ -1099,6 +1286,7 @@ export default function App() {
         {page === 'home' && <HomePage onStart={() => setPage('independence')} />}
         {page === 'independence' && <IndependenceSection subPage={subPage} setSubPage={setSubPage} />}
         {page === 'socialism' && <SocialismSection />}
+        {page === 'cq' && <CQSection />}
       </main>
 
       {page !== 'home' && (
@@ -1111,8 +1299,9 @@ export default function App() {
               <div className={`w-2.5 h-2.5 rounded-full ${page === 'independence' && subPage === 0 ? 'bg-red-700' : 'bg-slate-300'}`}></div>
               <div className={`w-2.5 h-2.5 rounded-full ${page === 'independence' && subPage === 1 ? 'bg-red-700' : 'bg-slate-300'}`}></div>
               <div className={`w-2.5 h-2.5 rounded-full ${page === 'socialism' ? 'bg-red-700' : 'bg-slate-300'}`}></div>
+              <div className={`w-2.5 h-2.5 rounded-full ${page === 'cq' ? 'bg-red-700' : 'bg-slate-300'}`}></div>
             </div>
-            {page !== 'socialism' ? (
+            {page !== 'cq' ? (
               <button onClick={goToNext} className="flex items-center gap-3 bg-red-700 text-white px-8 py-4 rounded-full shadow-2xl font-bold hover:bg-red-800 transition-all">
                 Tiếp <ArrowRight className="w-5 h-5" />
               </button>
