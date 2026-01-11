@@ -40,16 +40,21 @@ const ImageFrame = ({
   label = "Ảnh minh họa", 
   aspectRatio = "aspect-video",
   src,
-  className = ""
+  className = "",
+  fit = "cover"
 }: { 
-  label?: string, 
-  aspectRatio?: string,
-  src?: string,
-  className?: string
+  label?: string; 
+  aspectRatio?: string;
+  src?: string;
+  className?: string;
+  fit?: "cover" | "contain";
 }) => (
   <div className={`w-full ${aspectRatio} ${className} rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 relative`}>
     {src ? (
-      <img src={src} className="w-full h-full object-cover" />
+      <img
+        src={src}
+        className={`w-full h-full ${fit === "contain" ? "object-contain" : "object-cover"}`}
+      />
     ) : (
       <div className="w-full h-full border-2 border-dashed border-slate-300 flex items-center justify-center text-slate-400 text-sm">
         {label}
@@ -58,8 +63,7 @@ const ImageFrame = ({
   </div>
 );
 
-
-
+// --- Component Trích dẫn kèm Ảnh ---
 const QuoteWithImage = ({
   text,
   author = "Hồ Chí Minh",
@@ -246,7 +250,10 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                             <Sword className="text-red-700 w-6 h-6" />
                             <h4 className="font-bold">Kháng chiến chống Pháp (19/12/1946)</h4>
                           </div>
-                          <ImageFrame label="Ảnh: Lời kêu gọi Toàn quốc kháng chiến" />
+                          <ImageFrame 
+                            src="/images/khang-chien-chong-Phap-1946.jpg"
+                            label="Lời kêu gọi Toàn quốc kháng chiến 1946"
+                          />
                           <div className="border-l-4 border-red-700 pl-4 py-2 bg-red-50/50 rounded-r-xl">
                             <p className="text-sm italic font-medium">“Không! Chúng ta thà hy sinh tất cả, chứ nhất định không chịu mất nước, nhất định không chịu làm nô lệ”</p>
                           </div>
@@ -257,7 +264,10 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                             <Zap className="text-red-700 w-6 h-6" />
                             <h4 className="font-bold">Kháng chiến chống Mỹ (1966)</h4>
                           </div>
-                          <ImageFrame label="Ảnh: Chân lý Không có gì quý hơn độc lập tự do" />
+                          <ImageFrame 
+                            src="/images/khang-chien-chong-My-1966.jpg"
+                            label="Chân lý Không có gì quý hơn độc lập, tự do (1966)"
+                          />
                           <div className="border-l-4 border-red-700 pl-4 py-2 bg-red-50/50 rounded-r-xl">
                             <p className="text-sm italic font-medium">“Không có gì quý hơn độc lập, tự do.”</p>
                           </div>
@@ -281,8 +291,11 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                   </p>
                   
                   <div className="grid md:grid-cols-2 gap-8 items-stretch">
-                    <div className="h-full">
-                      <ImageFrame label="Ảnh minh họa: Hồ Chí Minh tiếp thu học thuyết Tam dân" />
+                    <div className="h-full flex">
+                      <ImageFrame 
+                      src= "/images/Tam-dan-Ton-Trung-Son.jpg"
+                      className="h-full [&_img]:object-left"
+                      label="Ảnh minh họa: Hồ Chí Minh tiếp thu học thuyết Tam dân" />
                     </div>
                     <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col justify-center">
                       <h4 className="font-bold text-red-700 mb-6">
@@ -352,6 +365,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                   <QuoteWithImage 
                     text="Tôi chỉ có một sự ham muốn, ham muốn tột bậc là làm sao cho nước ta hoàn toàn độc lập, dân ta hoàn toàn tự do, ai cũng có cơm ăn áo mặc, ai cũng được học hành."
                     subText="Lấy hạnh phúc nhân dân làm thước đo giá trị"
+                    image="/images/Toi-chi-co-mot-ham-muon.jpg"
                   />
                 </div>
               </section>
@@ -401,7 +415,9 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                         </ul>
                       </div>
                       <div className="w-full md:w-2/5">
-                        <ImageFrame label="Ảnh: Lễ ký kết Hiệp định Sơ bộ 6/3/1946" />
+                        <ImageFrame 
+                        src = "/images/Hiep-dinh-so-bo-1946.jpg"
+                        label="Ảnh: Lễ ký kết Hiệp định Sơ bộ 6/3/1946" />
                       </div>
                     </div>
                   </div>
@@ -427,6 +443,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                   <QuoteWithImage 
                     text="Tổ quốc ta nhất định sẽ thống nhất. Đồng bào Nam Bắc nhất định sẽ sum họp một nhà."
                     subText="Niềm tin sắt đá trong Di chúc (1969)"
+                    image="/images/Di-chuc-cua-Bac-1.jpg"
                   />
                 </div>
               </section>
@@ -449,9 +466,15 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                     Hàng loạt những phong trào yêu nước đã nổ ra tiêu biểu như các phong trào do <strong>Phan Bội Châu, Hoàng Hoa Thám và Phan Chu Trinh</strong> khởi xướng nhưng không thành công. Sự thất bại của những phong trào yêu nước trong thời kỳ này đã nói lên sự khủng hoảng, bế tắc về giai cấp lãnh đạo và đường lối cách mạng.
                   </p>
                   <div className="grid md:grid-cols-3 gap-6">
-                    <ImageFrame label="Ảnh: Phan Bội Châu & phong trào Đông Du" />
-                    <ImageFrame label="Ảnh: Hoàng Hoa Thám & khởi nghĩa Yên Thế" />
-                    <ImageFrame label="Ảnh: Phan Chu Trinh & phong trào Duy Tân" />
+                    <ImageFrame 
+                    src = "/images/Phan-Boi-Chau.jpg"
+                    label="Ảnh: Phan Bội Châu & phong trào Đông Du" />
+                    <ImageFrame 
+                    src = "/images/Hoang-Hoa-Tham.jpg"
+                    label="Ảnh: Hoàng Hoa Thám & khởi nghĩa Yên Thế" />
+                    <ImageFrame 
+                    src = "/images/Phan-Chu-Trinh.jpg"
+                    label="Ảnh: Phan Chu Trinh & phong trào Duy Tân" />
                   </div>
                 </div>
 
@@ -474,14 +497,35 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                       <h4 className="font-bold text-red-900">Luận cương của Lênin về vấn đề dân tộc và thuộc địa</h4>
                     </div>
                   </div>
-                  
-                  {/* Đường nối giả lập */}
-                  <div className="hidden md:flex flex-col items-center mb-10">
-                    <div className="h-12 w-px bg-red-200"></div>
-                    <div className="w-1/2 h-px bg-red-200"></div>
-                    <div className="h-12 w-px bg-red-200"></div>
-                    <LinkIcon className="text-red-300 w-5 h-5 -mt-2" />
-                  </div>
+
+                  <svg
+                    className="hidden md:block absolute left-0 top-[180px] w-full h-[140px] pointer-events-none"
+                    viewBox="0 0 1000 200"
+                    preserveAspectRatio="none"
+                  >
+                    <defs>
+                      <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+                        <path d="M0,0 L0,6 L9,3 z" fill="#dc2626" />
+                      </marker>
+                    </defs>
+
+                    <path
+                      d="M250,0 C250,90 380,140 500,180"
+                      stroke="#dc2626"
+                      strokeWidth="2"
+                      fill="none"
+                      markerEnd="url(#arrow)"
+                    />
+
+                    <path
+                      d="M750,0 C750,90 620,140 500,180"
+                      stroke="#dc2626"
+                      strokeWidth="2"
+                      fill="none"
+                      markerEnd="url(#arrow)"
+                    />
+                  </svg>
+
 
                   <div className="max-w-3xl mx-auto border-l-8 border-red-700 bg-red-700 text-white p-8 rounded-r-3xl shadow-xl transform hover:-translate-y-1 transition-transform">
                     <p className="text-2xl font-playfair font-black italic text-center">
@@ -495,11 +539,11 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                   <div className="space-y-4">
                     <div className="flex items-start gap-4 p-4 bg-red-50 rounded-xl">
                       <CheckCircle2 className="text-red-700 w-6 h-6 mt-1 flex-shrink-0" />
-                      <p className="font-bold text-slate-900 text-lg uppercase tracking-tight">Giải phóng dân tộc là nhiệm vụ trước hết, trên hết</p>
+                      <p className="text-slate-900 text-lg tracking-tight">Giải phóng dân tộc là nhiệm vụ trước hết, trên hết</p>
                     </div>
                     <div className="flex items-start gap-4 p-4 bg-red-50 rounded-xl">
                       <CheckCircle2 className="text-red-700 w-6 h-6 mt-1 flex-shrink-0" />
-                      <p className="font-bold text-slate-900 text-lg uppercase tracking-tight">Giải phóng dân tộc gắn liền với giải phóng xã hội, giải phóng giai cấp và giải phóng con người</p>
+                      <p className="text-slate-900 text-lg tracking-tight">Giải phóng dân tộc gắn liền với giải phóng xã hội, giải phóng giai cấp và giải phóng con người</p>
                     </div>
                   </div>
                 </div>
@@ -538,7 +582,9 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                 </div>
 
                 <div className="max-w-3xl mx-auto">
-                  <ImageFrame label="Ảnh: Bác Hồ tại Đại hội đại biểu toàn quốc lần thứ II của Đảng (1951)" />
+                  <ImageFrame 
+                  src = "/images/Dai-hoi-Dang-II.jpg"
+                  label="Ảnh: Bác Hồ tại Đại hội đại biểu toàn quốc lần thứ II của Đảng (1951)" />
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-10 items-center">
@@ -569,8 +615,10 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
               </div>
 
               <div className="grid lg:grid-cols-2 gap-10 items-center mb-16">
-                <div className="h-full">
-                  <ImageFrame label="Ảnh: Đại đoàn kết dân tộc là nguồn sức mạnh quyết định thắng lợi" />
+                <div className="h-full flex">
+                  <ImageFrame 
+                  src = "/images/Kach-menh.jpg"
+                  label="Ảnh: Đại đoàn kết dân tộc là nguồn sức mạnh quyết định thắng lợi" />
                 </div>
                 <div className="space-y-6">
                   <div className="border-l-8 border-red-700 bg-slate-50 p-8 rounded-r-2xl shadow-lg relative">
@@ -597,7 +645,10 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
 
               <div className="space-y-8">
                 <h3 className="text-2xl font-bold text-red-900 border-l-4 border-red-700 pl-4">Trong Sách lược vắn tắt (1930), Người xác định:</h3>
-                <ImageFrame label="Ảnh minh họa: Liên minh công nông trong Sách lược vắn tắt" />
+                <ImageFrame 
+                src = "/images/Sach-luoc-van-tat.jpg"
+                fit="contain"
+                label="Ảnh minh họa: Liên minh công nông trong Sách lược vắn tắt" />
                 <div className="grid md:grid-cols-3 gap-6">
                   {[
                     "Công nhân và nông dân là lực lượng chủ lực",
@@ -655,7 +706,10 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-10 items-start">
-                  <ImageFrame label="Ảnh: Đại hội VI Quốc tế cộng sản năm 1928" />
+                  <ImageFrame 
+                  src = "/images/Dai-hoi-Quoc-te-VI-1928.jpg"
+                  fit ="contain"
+                  label="Ảnh: Đại hội VI Quốc tế cộng sản năm 1928" />
                   <div className="bg-red-50 border-2 border-red-100 p-8 rounded-[2rem] relative">
                     <AlertCircle className="absolute -top-4 -left-4 w-10 h-10 text-red-700 bg-white rounded-full shadow-lg" />
                     <p className="text-slate-800 leading-relaxed italic text-lg">
@@ -692,7 +746,9 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                    <FileText className="absolute -bottom-10 -right-10 w-64 h-64 text-slate-100 -rotate-12" />
                    <div className="grid lg:grid-cols-12 gap-10 items-center relative z-10">
                       <div className="lg:col-span-4 self-stretch">
-                        <ImageFrame label="Tác phẩm Bản án chế độ thực dân Pháp (1925)" aspectRatio="aspect-[3/4]" />
+                        <ImageFrame 
+                        src = "/images/sach-ban-an-Phap.jpg"
+                        label="Tác phẩm Bản án chế độ thực dân Pháp (1925)" aspectRatio="aspect-[3/4]" />
                       </div>
                       <div className="lg:col-span-8 space-y-6">
                         <h3 className="text-2xl font-bold text-red-800 leading-tight">
@@ -714,7 +770,9 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                 {/* NỘI DUNG BỔ SUNG PHẦN d */}
                 <div className="space-y-8 pt-10">
                    <div className="max-w-4xl mx-auto">
-                      <ImageFrame label="Ảnh: Hồ Chí Minh tại Pháp và phong trào công nhân quốc tế" />
+                      <ImageFrame 
+                      src = "/images/HCM-phong-trao-quoc-te.jpg"
+                      label="Ảnh: Hồ Chí Minh tại Pháp và phong trào công nhân quốc tế" />
                    </div>
                    <div className="border-l-8 border-red-700 bg-red-50 p-8 rounded-r-3xl shadow-xl">
                       <Quote className="text-red-200 w-12 h-12 mb-4" />
@@ -748,7 +806,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                    <p className="text-2xl font-bold text-slate-800">
                       Người vạch rõ: <span className="text-red-700 italic">“Chế độ thực dân, tự bản thân nó, đã là một hành động bạo lực của kẻ mạnh đối với kẻ yếu rồi”</span>
                    </p>
-                   <ImageFrame label="Ảnh: Chế độ thực dân và bạo lực cai trị" />
+                   {/* <ImageFrame label="Ảnh: Chế độ thực dân và bạo lực cai trị" /> */}
                 </div>
 
                 <div className="bg-white border-2 border-red-100 rounded-[3rem] p-10 shadow-xl overflow-hidden relative">
@@ -816,7 +874,9 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                         </div>
                       </div>
                       <div className="h-full flex">
-                        <ImageFrame label="Ảnh: Thắng lợi của Cách mạng Tháng Tám 1945" aspectRatio="h-full min-h-[350px]" />
+                        <ImageFrame 
+                        src = "/images/CMT8.jpg"
+                        label="Ảnh: Thắng lợi của Cách mạng Tháng Tám 1945" aspectRatio="h-full min-h-[350px]" />
                       </div>
                    </div>
                 </div>
@@ -848,12 +908,24 @@ const SocialismSection = () => (
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">Quan niệm của Hồ Chí Minh về chủ nghĩa xã hội</h2>
         </div>
 
-        <div className="max-w-4xl mx-auto bg-red-700 text-white p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden group">
+        <div className="grid md:grid-cols-2 gap-10 items-stretch">
+        <div className="h-full flex">
+          <ImageFrame 
+            src="/images/HCM-nhan-dan.jpg"
+            label="Ảnh minh họa: Quan niệm về chủ nghĩa xã hội"
+            className="h-full [&_img]:object-left"
+            fit="cover"
+          />
+        </div>
+
+        <div className="bg-red-700 text-white p-10 rounded-[2.5rem] shadow-xl relative overflow-hidden group flex items-center">
           <Quote className="absolute -top-4 -left-4 w-24 h-24 opacity-10 group-hover:scale-110 transition-transform" />
-          <p className="text-2xl md:text-3xl font-playfair italic leading-relaxed relative z-10 text-center">
-            "Nói một cách tóm tắt, mộc mạc, chủ nghĩa xã hội trước hết nhằm làm cho nhân dân lao động thoát nạn bần cùng, làm cho mọi người có công ăn việc làm, được ấm no và sống một đời hạnh phúc."
+          <p className="text-xl md:text-2xl font-playfair italic font-normal leading-relaxed relative z-10 text-center">
+            “Nói một cách tóm tắt, mộc mạc, chủ nghĩa xã hội trước hết nhằm làm cho nhân dân lao động thoát nạn bần cùng, làm cho mọi người có công ăn việc làm, được ấm no và sống một đời hạnh phúc.”
           </p>
         </div>
+      </div>
+
       </section>
 
       {/* 2. Tính tất yếu - NỘI DUNG CẬP NHẬT THEO YÊU CẦU */}
@@ -870,6 +942,15 @@ const SocialismSection = () => (
           
           <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 my-12">
             <h4 className="font-bold text-red-700 mb-8 text-center uppercase tracking-widest text-lg">Từ thực tiễn cách mạng Việt Nam, Người đặt ra một vấn đề mang tính căn bản:</h4>
+            <div className="mb-10">
+            <ImageFrame 
+              src="/images/van-de-can-ban."
+              label="Ảnh minh họa: Từ thực tiễn cách mạng Việt Nam"
+              className="max-h-[360px]"
+              fit="contain"
+            />
+          </div>
+
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
                 <div className="w-12 h-12 bg-red-50 text-red-700 rounded-full flex items-center justify-center mb-4 font-bold">?</div>
@@ -900,11 +981,11 @@ const SocialismSection = () => (
             <div className="space-y-6 pt-6">
               <h4 className="text-xl font-bold text-slate-900 border-l-4 border-red-700 pl-4">Về con đường quá độ, Hồ Chí Minh chỉ ra sự lựa chọn phù hợp:</h4>
               <div className="grid md:grid-cols-2 gap-8">
-                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-inner italic">
-                  “Có nước đi thẳng lên chủ nghĩa xã hội từ chủ nghĩa tư bản phát triển.”
+                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-inner italic font-semibold text-lg md:text-xl text-slate-900">
+                  Có nước đi thẳng lên chủ nghĩa xã hội từ chủ nghĩa tư bản phát triển.
                 </div>
-                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-inner italic">
-                  “Có nước phải trải qua thời kỳ dân chủ mới rồi tiến lên chủ nghĩa xã hội.”
+                <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-inner italic font-semibold text-lg md:text-xl text-slate-900">
+                  Có nước phải trải qua thời kỳ dân chủ mới rồi tiến lên chủ nghĩa xã hội.
                 </div>
               </div>
 
@@ -921,7 +1002,6 @@ const SocialismSection = () => (
         </div>
       </section>
 
-      {/* 3. Đặc trưng - ĐIỀU CHỈNH SIZE CHỮ THEO YÊU CẦU */}
       <section className="space-y-12 pt-16 border-t border-slate-100">
         <div className="flex items-center gap-4 mb-8">
           <div className="w-12 h-12 bg-red-700 text-white rounded-2xl flex items-center justify-center font-black text-xl">3</div>
@@ -936,8 +1016,8 @@ const SocialismSection = () => (
           <div className="divide-y divide-slate-100">
             {SOCIALIST_CHARACTERISTICS.map((c, i) => (
               <div key={i} className="grid md:grid-cols-4 p-10 items-center gap-10 group hover:bg-red-50/30 transition-colors">
-                <div className="font-black text-red-700 text-xl uppercase md:text-center border-b md:border-b-0 pb-2 md:pb-0">{c.field}</div>
-                <div className="md:col-span-3 text-slate-900 leading-relaxed font-bold text-2xl">
+                <div className="font-black text-red-700 text-xl md:text-center border-b md:border-b-0 pb-2 md:pb-0">{c.field}</div>
+                <div className="md:col-span-3 text-slate-900 leading-relaxed font-normal text-xl">
                   {c.content}
                 </div>
               </div>
@@ -951,8 +1031,8 @@ const SocialismSection = () => (
             <p className="text-3xl font-playfair italic text-white leading-tight">
               “Làm nhiều hưởng nhiều, làm ít hưởng ít, không làm thì không hưởng”
             </p>
-            <p className="mt-6 text-sm opacity-50 italic">
-              (Trừ những người già yếu, tàn tật)
+            <p className="mt-6 text-base md:text-lg opacity-60 italic">
+              bảo đảm phúc lợi xã hội cho người già, trẻ em và những người còn khó khăn trong cuộc sống; mọi người đều có điều kiện để phát triển như nhau
             </p>
           </div>
         </div>
