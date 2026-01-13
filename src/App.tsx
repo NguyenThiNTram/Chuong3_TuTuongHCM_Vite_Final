@@ -76,12 +76,14 @@ const ImageFrame = ({
 // --- Component Trích dẫn kèm Ảnh ---
 const QuoteWithImage = ({
   text,
+  extraText,
   author = "Hồ Chí Minh",
   subText = "",
   image,
   imageClass = ""
 }: {
   text: string;
+  extraText?: string;
   author?: string;
   subText?: string;
   image?: string;
@@ -91,15 +93,32 @@ const QuoteWithImage = ({
     <div className="order-2 md:order-1">
       <ImageFrame src={image} className={imageClass} />
     </div>
-    <div className="order-1 md:order-2 border-l-4 border-red-700 pl-6 py-4 bg-red-50/50 rounded-r-2xl">
-      <Quote className="text-red-200 w-10 h-10 mb-2" />
-      <p className="text-xl font-medium text-red-950 italic leading-relaxed mb-4">"{text}"</p>
+
+    <div className="order-1 md:order-2 border-l-4 border-red-700 pl-6 py-5 bg-red-50/50 rounded-r-2xl">
+      <Quote className="text-red-200 w-10 h-10 mb-3" />
+
+      {/* Quote chính */}
+      <p className="text-xl font-medium text-red-950 italic leading-relaxed mb-4">
+        “{text}”
+      </p>
+
+      {/* Quote bổ sung – cùng style */}
+      {extraText && (
+        <p className="text-xl font-medium text-red-950 italic leading-relaxed mb-4">
+          “{extraText}”
+        </p>
+      )}
+
       <p className="text-red-700 font-bold">— {author}</p>
-      {subText && <p className="text-xs text-red-600/70 mt-1 uppercase tracking-wider">{subText}</p>}
+
+      {subText && (
+        <p className="text-xs text-red-600/70 mt-1 uppercase tracking-wider">
+          {subText}
+        </p>
+      )}
     </div>
   </div>
 );
-
 
 // --- 1. TRANG ĐẦU: GIỚI THIỆU ---
 const HomePage = ({ onStart }: { onStart: () => void }) => (
@@ -215,6 +234,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
 
                   <QuoteWithImage 
                     text="Tất cả các dân tộc trên thế giới đều sinh ra bình đẳng; dân tộc nào cũng có quyền sống, quyền sung sướng và quyền tự do... Đó là những lẽ phải không ai chối cãi được"
+                    extraText="Người ta sinh ra tự do và bình đẳng về quyền lợi; và phải luôn luôn được tự do và bình đẳng về quyền lợi."
                     subText="Dựa trên Tuyên ngôn Mỹ (1776) và Pháp (1791)"
                     image="/images/Bac-Ho-Tuyen-ngon-doc-lap.jpg"
                   />
@@ -1137,18 +1157,26 @@ const CQSection = () => {
                   <p className="text-lg text-slate-700 mb-6 leading-relaxed">
                     Trái với quan điểm "Châu Âu là trung tâm" của Quốc tế Cộng sản (cho rằng thuộc địa phải đợi chính quốc thắng lợi), Hồ Chí Minh khẳng định: Cách mạng thuộc địa có thể thắng trước.
                   </p>
-                  <div className="grid md:grid-cols-2 gap-8 items-stretch mb-10">
-                    <div className="bg-amber-600 p-8 rounded-2xl shadow-xl text-center text-white flex flex-col justify-center transform hover:scale-[1.02] transition-transform">
-                      <span className="text-xs font-bold text-amber-200 uppercase tracking-widest mb-2">Mác - Lênin (Châu Âu)</span>
+                    <div className="grid md:grid-cols-2 gap-8 items-stretch mb-10">
+                      <div className="bg-amber-100 p-8 rounded-2xl shadow-xl text-center text-amber-900 flex flex-col justify-center transform hover:scale-[1.02] transition-transform">
+                      <span className="text-xs font-bold text-amber-700 uppercase tracking-widest mb-2">
+                        Mác - Lênin (Châu Âu)
+                      </span>
                       <p className="text-xl font-black">Giải phóng giai cấp</p>
-                      <div className="my-4 flex justify-center"><ArrowLeftRight className="text-amber-300" /></div>
+                      <div className="my-4 flex justify-center">
+                        <ArrowLeftRight className="text-amber-600" />
+                      </div>
                       <p className="text-xl font-black">Giải phóng dân tộc</p>
                     </div>
-                    <div className="bg-amber-600 p-8 rounded-2xl shadow-xl text-center text-white flex flex-col justify-center transform hover:scale-[1.02] transition-transform">
-                      <span className="text-xs font-bold text-amber-200 uppercase tracking-widest mb-2">Hồ Chí Minh (Thuộc địa)</span>
-                      <p className="text-xl font-black">Giải phóng dân tộc</p>
-                      <div className="my-4 flex justify-center"><ArrowLeftRight className="text-amber-300 rotate-180" /></div>
-                      <p className="text-xl font-black">Giải phóng giai cấp</p>
+                    <div className="bg-red-100 p-8 rounded-2xl shadow-xl text-center text-red-900 flex flex-col justify-center transform hover:scale-[1.02] transition-transform">
+                      <span className="text-xs font-bold text-red-700 uppercase tracking-widest mb-2">
+                        Tư tưởng Hồ Chí Minh (Việt Nam)
+                      </span>
+                      <p className="text-xl font-black">Độc lập dân tộc</p>
+                      <div className="my-4 flex justify-center">
+                        <ArrowLeftRight className="text-red-600" />
+                      </div>
+                      <p className="text-xl font-black">Chủ nghĩa xã hội</p>
                     </div>
                   </div>
                   <div className="flex flex-col md:flex-row gap-6 items-center bg-white p-6 rounded-2xl border border-amber-100">
