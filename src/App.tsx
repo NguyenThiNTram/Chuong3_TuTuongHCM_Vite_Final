@@ -222,7 +222,13 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
                     subText="Lời khẳng định khát vọng từ thuở thiếu thời"
                     image="/images/tuyen-ngon.jpg"
                   />
-
+                  <ImageFrame
+                    label="Ảnh: Bản Yêu sách của nhân dân An Nam – 1919"
+                    aspectRatio="aspect-[16/9]"
+                    src="/images/Yeu-sach-An-Nam.jpg"
+                    className="my-2"
+                    fit="contain"
+                  />
                   <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 my-8">
                     <h4 className="font-bold text-red-700 mb-4 flex items-center gap-2">
                       <Scale className="w-5 h-5" /> Năm 1919: Hội nghị Vécxây
