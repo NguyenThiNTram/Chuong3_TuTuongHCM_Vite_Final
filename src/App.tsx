@@ -400,7 +400,7 @@ const IndependenceSection = ({ subPage, setSubPage }: { subPage: number, setSubP
 
                   <QuoteWithImage 
                     text="Tôi chỉ có một sự ham muốn, ham muốn tột bậc là làm sao cho nước ta hoàn toàn độc lập, dân ta hoàn toàn tự do, ai cũng có cơm ăn áo mặc, ai cũng được học hành."
-                    subText="Lấy hạnh phúc nhân dân làm thước đo giá trị"
+                    subText="Di chúc của Chủ tịch Hồ Chí Minh"
                     image="/images/Toi-chi-co-mot-ham-muon.jpg"
                   />
                 </div>
